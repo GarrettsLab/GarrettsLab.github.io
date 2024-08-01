@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Garrett's Lab</title>
-        <link rel="stylesheet" href="main.cc">
-    </head>
-    <body>
-        <h1>Task List</h1>
-        <p id="msg">Current tasks:</p>
-        <ul>
-          <li class="list">Add visual styles</li>
-          <li class="list">Add light and dark themes</li>
-          <li>Enable switching the theme</li>
-        </ul>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garrett's Lab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Garrett's Lab</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#forum">Forum</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h2>Latest Articles</h2>
+        <div id="articles"></div>
+    </section>
+    
+    <section id="forum">
+        <h2>Forum</h2>
+        <div id="posts"></div>
+        <form id="postForm">
+            <textarea id="postContent" placeholder="Write your comment here..."></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </section>
+    
+    <section id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
 </html>
