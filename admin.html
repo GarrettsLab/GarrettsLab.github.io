@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#post-editor',
+            plugins: 'image',
+            toolbar: 'undo redo | formatselect | bold italic backcolor | image | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
+            automatic_uploads: true,
+            images_upload_handler: function (blobInfo, success, failure) {
+                // Handle image upload
+                uploadImage(blobInfo.blob()).then(url => {
+                    success(url);
+                }).catch(error => {
+                    failure('Error uploading image: ' + error.message);
+                });
+            }
+        });
+        
+        async function uploadImage(blob) {
+            const formData = new FormData();
+            formData.append('file', blob);
+
+            const response = await fetch('https://api.github.com/repos/your_username/GarrettsLab/contents/images/' + blob.name, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'token your_github_token', // Replace with your GitHub token
+                    'Content-Type': 'application/octet-stream'
+                },
+                body: await blob.arrayBuffer()
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to upload image');
+            }
+
+            const data = await response.json();
+            return data.content.download_url;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+    </header>
+    <main>
+        <div id="login-container">
+            <form id="login-form">
+                <input type="password" id="admin-password" placeholder="Enter Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div id="admin-container" style="display:none;">
+            <form id="post-form">
+                <input type="text" id="post-title" placeholder="Post Title" required>
+                <textarea id="post-editor" placeholder="Write your post here..."></textarea>
+                <button type="submit">Save Post</button>
+            </form>
+            <div id="post-list">
+                <h2>Existing Posts</h2>
+                <ul id="posts-list">
+                    <!-- Existing posts will be listed here -->
+                </ul>
+            </div>
+        </div>
+    </main>
+    <script src="js/admin.js"></script>
+</body>
+</html>

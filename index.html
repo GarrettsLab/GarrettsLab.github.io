@@ -4,43 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garrett's Lab</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
         <h1>Garrett's Lab</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#forum">Forum</a></li>
-                <li><a href="#login">Login</a></li>
-            </ul>
-        </nav>
     </header>
-    
-    <section id="home">
-        <h2>Latest Articles</h2>
-        <div id="articles"></div>
-    </section>
-    
-    <section id="forum">
-        <h2>Forum</h2>
-        <div id="posts"></div>
-        <form id="postForm">
-            <textarea id="postContent" placeholder="Write your comment here..."></textarea>
-            <button type="submit">Post</button>
-        </form>
-    </section>
-    
-    <section id="login">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button type="submit">Login</button>
-        </form>
-    </section>
-    
-    <script src="script.js"></script>
+    <main>
+        <section id="posts-list">
+            <!-- Posts will be dynamically loaded here -->
+        </section>
+    </main>
+    <script src="js/main.js"></script>
 </body>
 </html>
