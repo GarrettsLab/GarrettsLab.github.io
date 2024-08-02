@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/f0gf9kjia8nptytli6ohq83vzk3sp5loyele9uao8eqh3wkd/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: '#post-editor',
@@ -26,7 +26,7 @@
             const formData = new FormData();
             formData.append('file', blob);
 
-            const response = await fetch('https://api.github.com/repos/your_username/GarrettsLab/contents/images/' + blob.name, {
+            const response = await fetch('https://api.github.com/repos/GarrettsLab/GarrettsLab/images/' + blob.name, {
                 method: 'PUT',
                 headers: {
                     'Authorization': 'token your_github_token', // Replace with your GitHub token
